@@ -4,60 +4,60 @@ from markitdown import MarkItDown
 
 st.set_page_config(page_title="MarkItDown Web", layout="wide")
 
-st.title("MarkItDown Web 转换器")
+st.title("MarkItDown Web Converter")
 
 # Initialize MarkItDown without the enable_plugins parameter
 md = MarkItDown()
 
-# 文件上传部分
-uploaded_files = st.file_uploader("选择要转换的文件", accept_multiple_files=True)
+# File upload section
+uploaded_files = st.file_uploader("Select the files to convert", accept_multiple_files=True)
 
 if uploaded_files:
     for uploaded_file in uploaded_files:
-        st.subheader(f"处理文件: {uploaded_file.name}")
+        st.subheader(f"Processing of documents: {uploaded_file.name}")
         
-        # 保存上传的文件到临时目录
+        # Save uploaded files to a temporary directory
         temp_path = f"temp_{uploaded_file.name}"
         with open(temp_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
         
         try:
-            # 转换文件
+            # Converted documents
             result = md.convert(temp_path)
             
-            # 显示转换结果
-            st.text_area("转换结果", result.text_content, height=300)
+            # Displaying conversion results
+            st.text_area("Conversion results", result.text_content, height=300)
             
-            # 提供下载按钮
+            # Provide download button
             st.download_button(
-                label="下载 Markdown 文件",
+                label="Download Markdown file",
                 data=result.text_content,
                 file_name=f"{os.path.splitext(uploaded_file.name)[0]}.md",
                 mime="text/markdown"
             )
             
         except Exception as e:
-            st.error(f"转换失败: {str(e)}")
+            st.error(f"Conversion failure: {str(e)}")
         finally:
-            # 清理临时文件
+            # Cleaning up temporary files
             if os.path.exists(temp_path):
                 os.remove(temp_path)
 
 st.sidebar.markdown("""
-## 使用说明
-1. 点击"选择要转换的文件"上传一个或多个文件
-2. 系统会自动转换文件为 Markdown 格式
-3. 可以预览转换结果
-4. 点击"下载 Markdown 文件"保存结果
+## Instructions for use
+1. Click on "Select Files to Convert" to upload one or more files.
+2. The system automatically converts the file to Markdown format
+3. Conversion results can be previewed
+4. Click on "Download Markdown file" to save the result.
 
-## 支持的文件格式
+## Supported file formats
 - PDF
 - Word
 - PowerPoint
 - Excel
-- 图片文件
-- 音频文件
+- Picture Files
+- audio file (computer)
 - HTML
 - CSV, JSON, XML
-- ZIP 文件
+- ZIP file
 """)
