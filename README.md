@@ -35,18 +35,16 @@ A MarkItDown-based web interface tool that provides convenient file to Markdown 
 - Python 3.x
 - pip package manager
 
-## 快速开始
+## Quick Start
 
 1. Cloning projects to local:
 ```bash
-git clone git@github.com:ccbsdu/markitdown-web.git
-cd markitdown-web
+git clone git@github.com:ccbsdu/markitdown-web.git && cd markitdown-web
 ```
 
 2. Create and activate a virtual environment:
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv venv && source venv/bin/activate
 ```
 
 3. Install the dependency packages:
@@ -59,7 +57,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-5. Access the application in a browser (default address: http://localhost:8501）
+Access the application in a browser (default address: http://localhost:8501).
 
 ## Instructions for use
 
@@ -80,9 +78,9 @@ markitdown-web/
 
 ## Caution
 
-- It is recommended to use a virtual environment to run the application
+- It is recommended to use a virtual environment to run the application.
 - Conversion of large files may take a long time, please be patient.
-- Temporary files will be cleaned up automatically after conversion
+- Temporary files will be cleaned up automatically after conversion.
 - Please make sure you have enough disk space.
 
 ## License
