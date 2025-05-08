@@ -91,4 +91,3 @@ This project is open source under the MIT license.
 
 - Thanks to [MarkItDown](https://github.com/microsoft/markitdown) for providing the core conversion functionality.
 - Thanks to [Streamlit](https://streamlit.io/) for the great web framework.
-```
